@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: react-config
+data:
+  VITE_API_URL: https://api.didin.in
+  VITE_FRONTEND_URL: https://sonu.didin.in
+
