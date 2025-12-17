@@ -13,11 +13,13 @@ spec:
       labels:
         app: react
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
-      - name: react
-        image: didin8080/frontend:latest
-        ports:
-        - containerPort: 5000
-        envFrom:
-        - configMapRef:
-            name: react-config
+        - name: frontend
+          image: didin8080/frontend:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: frontend-env

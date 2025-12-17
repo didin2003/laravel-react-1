@@ -4,8 +4,9 @@ metadata:
   name: frontend-svc
   namespace: apps
 spec:
-  selector: react
+  selector:
+    app: react
   ports:
-  - port: 5000
-    targetPort: 5000
+    - port: 5000
+      targetPort: 5000
   type: ClusterIP

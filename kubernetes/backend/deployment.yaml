@@ -14,13 +14,12 @@ spec:
         app: laravel
     spec:
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
       containers:
-      - name: backend
-        image: didin8080/backend:latest
-        ports:
-        - containerPort: 9000
-        envFrom:
-        - secretRef:
-            name: backend-env
-
+        - name: backend
+          image: didin8080/backend:latest
+          ports:
+            - containerPort: 9000
+          envFrom:
+            - secretRef:
+                name: backend-env
