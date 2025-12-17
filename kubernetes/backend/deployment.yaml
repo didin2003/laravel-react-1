@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: laravel-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: laravel
@@ -12,8 +12,14 @@ spec:
       labels:
         app: laravel
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
-      - name: laravel
+      - name: backend
         image: didin8080/backend:latest
         ports:
         - containerPort: 9000
+        envFrom:
+        - secretRef:
+            name: backend-env
+
