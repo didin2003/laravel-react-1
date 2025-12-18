@@ -39,10 +39,12 @@ RUN php artisan key:generate || true
 # Fix php-fpm listen to allow external connections (important for Kubernetes)
 RUN sed -i 's|^listen = .*|listen = 0.0.0.0:9000|' /usr/local/etc/php-fpm.d/www.conf
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 
-EXPOSE 9000
+EXPOSE 80
 
-CMD ["php-fpm"]
+CMD service nginx start && php-fpm -F
