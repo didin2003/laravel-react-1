@@ -4,6 +4,10 @@ metadata:
   name: app-ingress
   namespace: apps
 spec:
+  tls:
+   - hosts:
+       - api.didin.in
+     secretName: api-didin-tls
   rules:
     - host: api.didin.in
       http:
