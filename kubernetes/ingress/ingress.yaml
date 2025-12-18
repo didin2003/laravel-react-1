@@ -1,12 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress
+  name: backend-ingress
   namespace: apps
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: apps-cors-middleware@kubernetescrd
+    kubernetes.io/ingress.class: "nginx"                     # use your ingress class
+    nginx.ingress.kubernetes.io/enable-cors: "true"          # enable CORS
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"       # allow all origins
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS, PUT, DELETE"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization"
+    nginx.ingress.kubernetes.io/cors-max-age: "3600"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
     - hosts:
         - api.didin.in
@@ -22,4 +27,3 @@ spec:
                 name: backend-svc
                 port:
                   number: 80
-
