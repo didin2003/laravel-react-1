@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: cors-middleware
+  namespace: apps
+spec:
+  headers:
+    accessControlAllowOriginList:
+      - https://sonu.didin.in
+    accessControlAllowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    accessControlAllowHeaders:
+      - Authorization
+      - Content-Type
+    accessControlAllowCredentials: false
+    accessControlMaxAge: 86400
+    addVaryHeader: true
