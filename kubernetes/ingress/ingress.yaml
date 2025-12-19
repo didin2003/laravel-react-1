@@ -8,6 +8,9 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+    # SPA fallback annotations
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
+    traefik.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: traefik
   tls:
