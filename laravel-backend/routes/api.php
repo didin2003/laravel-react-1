@@ -10,12 +10,11 @@ Route::get('/health', function() {
     return response('OK', 200);
 });
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
-
-Route::middleware('auth:sanctum')->group(function () {
-Route::get('dashboard', [DashboardController::class, 'index']);
-Route::post('logout', [AuthController::class, 'logout']);
-
+Route::prefix('api')->group(function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('register', [AuthController::class, 'register']);
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('dashboard', [DashboardController::class, 'index']);
+        Route::post('logout', [AuthController::class, 'logout']);
+    });
 });
