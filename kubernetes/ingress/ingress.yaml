@@ -3,8 +3,15 @@ kind: Ingress
 metadata:
   name: apps-ingress
   namespace: apps
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - sonu.didin.in
+        - api.didin.in
+      secretName: apps-tls
   rules:
     - host: sonu.didin.in
       http:
