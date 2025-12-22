@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://sonu.didin.in'],
+    'allowed_origins' => ['https://frontend-domain-name'],
 
     'allowed_origins_patterns' => [],
 
