@@ -1,4 +1,4 @@
-export const API_BASE = 'https://api.didin.in/api';
+export const API_BASE = 'https://api1.didin.in/api';
 
 
 export function authFetch(url, opts = {}) {
